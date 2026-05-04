@@ -1,0 +1,61 @@
+---
+lead: Quick start e download foglio di stile
+icon: fa-brands fa-css3-alt
+code-snippet: html
+title: Shape CSS
+last_edited: '2026-04-23T09:22:05.762Z'
+auto_generated: false
+---
+
+# Quick Start
+
+1. **Crea un nuovo file `index.html` nella radice del tuo progetto**. Includi anche il tag `<meta name="viewport">` per garantire un comportamento reattivo corretto sui dispositivi mobili.
+
+```html
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CSS Shape demo</title>
+  </head>
+  <body>
+    <h1>Hello, world!</h1>
+  </body>
+</html>
+```
+
+1. **Includere CSS di Shape e JS di Bootstrap**:
+   Posiziona il tag `<link>` all'interno del `<head>` per il nostro CSS e il tag `<script>` per il nostro bundle JavaScript (incluso Popper per il posizionamento di dropdown, popover e tooltip) prima della chiusura del tag `</body>`.
+
+```html
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CSS Shape demo</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/centrosoftware-dev/mrk-cdn@1.0.0/shape.min.css" integrity="sha384-a05XZHV3Z6RB7Cs/d3c8aAdAXEA0LORrMbXOMkMW7bG9mYh3EV7knd4MtfAuCzZp" crossorigin="anonymous">
+  </head>
+  <body>
+    <h1>Hello, world!</h1>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  </body>
+</html>
+```
+
+Puoi anche includere Popper e il JS di Bootstrap separatamente.
+Se non hai intenzione di utilizzare dropdown, popover o tooltip, puoi risparmiare qualche kilobyte non includendo Popper.
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+```
+
+1. **Hello, world!** Apri la pagina nel tuo browser preferito per vedere la tua pagina con Bootstrap.
+
+## Documentazione
+
+La documentazione presente [Shape](https://shape.centrosoftware.com/web/utilities) riguarda esclusivamente le parti modificate e personalizzate di Bootstrap.
+
+Per tutte le informazioni relative ai componenti standard di Bootstrap non trattati qui, ti invitiamo a visitare la documentazione ufficiale disponibile sul sito [https://getbootstrap.com/docs/5.3/getting-started/introduction/](https://getbootstrap.com/docs/5.3/getting-started/introduction/).

@@ -1,40 +1,124 @@
 ---
-title: Welcome to Starlight
-description: Get started building your docs site with Starlight.
+title: ""
+description: Get started to be part of Centro Software.
 template: splash # Remove or comment out this line to display the site sidebar on this page.
-hero:
-  tagline: Congrats on setting up a new Starlight project!
-  image:
-    file: ../../assets/houston.webp
-  actions:
-    - text: Example Guide
-      link: /guides/example/
-      icon: right-arrow
-    - text: Read the Starlight docs
-      link: https://starlight.astro.build
-      icon: external
-      variant: minimal
+#hero:
+#  tagline: ""
+#  image:
+#    file: ../../assets/shape_logo_dark.svg
+#  actions:
+#    - text: Example Guide
+#      link: /guides/example/
+#      icon: right-arrow
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
+import CardGrid  from '../../components/card-grid.tsx'
 
-## Next steps
+<section className="flex flex-col items-center text-center h-70">
+  <img src="/src/assets/shape_logo_dark.svg" className="mx-auto mb-6 w-140" />
+  
+  <h3 className="text-4xl font-bold mb-4">
+    Centro Software Marketing design system
+  </h3>
+</section>
 
-<CardGrid stagger>
-	<Card title="Update content" icon="pencil">
-		Edit `src/content/docs/index.mdx` to see this page change.
-	</Card>
-	<Card title="Change page layout" icon="document">
-		Delete `template: splash` in `src/content/docs/index.mdx` to display a
-		sidebar on this page.
-	</Card>
-	<Card title="Add new content" icon="add-document">
-		Add Markdown or MDX files to `src/content/docs` to create new pages.
-	</Card>
-	<Card title="Configure your site" icon="setting">
-		Edit your `sidebar` and other config in `astro.config.mjs`.
-	</Card>
-	<Card title="Read the docs" icon="open-book">
-		Learn more in [the Starlight Docs](https://starlight.astro.build/).
-	</Card>
-</CardGrid>
+<section className="bg-brand-neutral border p-6 rounded-xl">
+  <div className="grid md:grid-cols-12 gap-6">
+    <div className="md:col-span-8 space-y-4 text-base leading-relaxed">
+      <p>
+        Ti diamo il benvenuto nel nostro <em>marketing design system</em>, chiamato <strong>Shape</strong>.
+      </p>
+      <p>
+        Shape è la guida e fonte ufficiale per ritrovare <strong>modelli</strong> di documenti e <strong>template</strong>, 
+        <strong>best practice</strong> per contenuti testuali e visivi, e <strong>regole generali</strong> su come 
+        <strong>presentare l'azienda</strong>, le <strong>persone</strong> e le <strong>soluzioni</strong>.
+      </p>
+      <p>
+        Shape è destinato a <strong>tutta la comunità aziendale</strong>, perché l'immagine dipende da ogni contatto 
+        verso l'esterno: <strong>clienti, prospect, partner, fornitori, associazioni e istituzioni</strong>.
+      </p>
+      <p>
+        Fa parte del <strong>regolamento aziendale</strong> ed è fondamentale per la coerenza dell’identità.
+      </p>
+    </div>
+
+    <div className="md:col-span-4">
+      <div className="border rounded-xl overflow-hidden shadow-sm bg-white">
+
+        <div className="bg-brand-accent text-center py-3 font-semibold">
+          Accesso rapido risorse
+        </div>
+
+        <div className="divide-y">
+          {[
+            { label: "Modelli documenti", href: "/shape/resources/documents" },
+            { label: "Modelli presentazioni", href: "/shape/resources/presentations" },
+            { label: "Come scrivere contenuti", href: "/shape/content/overview" },
+            { label: "Libreria loghi", href: "/shape/resources/logos" },
+          ].map((item, i) => (
+            <a
+              key={i}
+              href={item.href}
+              className="flex items-center justify-between gap-3 p-4 hover:bg-green-50 transition"
+            >
+              <span className="flex items-center gap-3">
+                {item.label}
+              </span>
+              <span className="text-sm">↗</span>
+            </a>
+          ))}
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+***
+
+Se desideri approfondire in dettaglio l'intero contenuto di Shape, qui trovi le descrizioni delle aree principali per poterti orientare più facilmente all'interno della documentazione completa.
+
+
+<CardGrid
+  client:visible
+  cards={[
+    {
+      title: "Introduzione",
+      description: "Questa sezione spiega i principi e i valori che guidano la nostra identità visita e comunicativa, i destinatari e il motivo del nome Shape.",
+      link: "/shape/introduction/overview",
+      image: "/img-docs/I-introduzione.svg",
+    },
+    {
+      title: "Foundation",
+      description: "Qui troverai tutti gli elementi fondamentali che guidano la composizioni delle nostre immagini: palette di colori, loghi e linee guida.",
+      link: "/shape/foundation/overview",
+      image: "/img-docs/F-foundation.svg",
+    },
+    {
+      title: "Content",
+      description: "Linee guida sul nostro tono di voce, come scrivere mail e documenti, quali parole aziendali usare e quali no per una comunicazione sempre coerente.",
+      link: "/shape/content/overview",
+      image: "/img-docs/C-content.svg",
+    },
+    {
+      title: "Visual",
+      description: "Tutto ciò che riguarda la creazione di documenti e presentazioni, oltre alla gestione della nostra immagine sui social media.",
+      link: "/shape/visual/overview",
+      image: "/img-docs/V-visual.svg",
+    },
+    {
+      title: "Web",
+      description: "In questa sezione sono raccolti gli stili e le regole che guidano la creazione di tutti i nostri siti web destinati al pubblico esterno.",
+      link: "/shape/web/overview",
+      image: "/img-docs/W-web.svg",
+    },
+    {
+      title: "Resources",
+      description: "In questa sezione, troverai modelli di documenti e presentazioni, loghi, immagini ufficiali e link a documentazione interna.",
+      link: "/shape/resources/overview",
+      image: "/img-docs/R-resources.svg",
+    }
+  ]}
+/>
+

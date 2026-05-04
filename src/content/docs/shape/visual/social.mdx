@@ -1,0 +1,112 @@
+---
+lead: I contenuti visivi dedicati alla comunicazione sui social
+icon: fa-duotone fa-icons
+title: Social
+last_edited: '2026-04-24T14:17:05.785Z'
+auto_generated: false
+---
+
+import ColorButton from '../../../../components/cs-color-button.tsx';
+
+# Panoramica
+
+I social utilizzati da Centro Software sono: LinkedIn, YouTube, Instagram e Facebook. Per ognuno di questi abbiamo identificato una serie di regole che ci aiutano a mettere in risalto i nostri contenuti e a interagire con gli utenti con cui entriamo in contatto ogni giorno. Le dimensioni seguono le stesse tecniche compositive e di proporzione della sezione “Imagery” di Shape.
+
+# Principi
+
+I contenuti creati per i social network seguono una serie di principi e best practice per renderli piacevoli, chiari ed efficaci e per creare la migliore esperienza possibile per follower e non. Anche se vengono utilizzati per spiegare concetti e caratteristiche delle nostre soluzioni, possono essere allegri, vivaci e quindi adatti al contesto.
+
+![](/img-docs/social-principi.png)
+
+In questo esempio puoi notare uno schema che sarà ricorrente per la costruzione dei contenuti, qualunque sia il canale social utilizzato: schema colori, sfumatura e sfondo, decorazione del testo, elementi grafici e immagini e logo.
+
+## Schema colori
+
+Abbiamo deciso di utilizzare lo schema colori 60-30-10 con l’obiettivo di distinguerci e rendere riconducibili i nostri contenuti al brand Centro Software, sia quando vengono utilizzati all’interno del feed di un social network sia quando vengono incorporati o condivisi esternamente. Non si tratta di uno schema rigoroso: la proporzione viene definita di caso in caso in base alle esigenze visive e agli obiettivi di design; tuttavia, è fortemente raccomandato quanto più possibile a questa regola per contribuire al rafforzamento dell’identità aziendale.
+
+![](/img-docs/social-schema.png)
+
+* 60%: <ColorButton client:visible variant="full" color={{ color: "#011e41", name: "brand-900" }} /> oppure sfumatura
+* 30%: <ColorButton client:visible variant="full" color={{ color: "#17ff88", name: "brand-accent" }} /> o <ColorButton client:visible variant="full" color={{ color: "#00df6d", name: "accent-bold" }} />
+* 10%: Altro
+
+## Sfumatura e sfondo
+
+La sfumatura è un effetto visivo che comporta una transizione graduale e fluida tra due o più colori. Oltre a rinforzare l’identità aziendale, l’utilizzo della sfumatura nei contenuti grafici e fotografici serve ad aggiungere profondità, morbidezza e una nuova dimensione alla scena, aumentando il suo fascino estetico e mettendo in risalto logo, slogan o altri elementi grafici e testuali.
+
+Essa è composta da due livelli sovrapposti(\*): un livello inferiore in tinta unita di colore 
+
+<ColorButton client:visible variant="full" color={{ color: "#011e41", name: "brand-900" }} /> (#011E41) e un livello superiore composto da una sfumatura, lungo la diagonale del formato scelto, che va da <ColorButton client:visible variant="full" color={{ color: "#011e41", name: "brand-900" }} /> (#011E41 con opacità al 100%) a <ColorButton client:visible variant="full" color={{ color: "#3093ef", name: "blue-500" }} /> (#3093EF con opacità a 66%).
+
+![](/img-docs/social-sfumatura.png)
+
+In base alle esigenze e agli elementi del contenuto è possibile far partire la sfumatura dall’alto o dal basso, al fine di ottimizzare visivamente la resa finale.
+
+**(\*) Nota**: Le applicazioni di grafica vettoriale (come Adobe Illustrator) nell’utilizzo delle sfumature potrebbero mostrare un artefatto visivo a bande, detto “banding”, visibile solo sugli schermi e non sulla stampa. Per evitare questo effetto falsato abbiamo deciso di applicare l’effetto Photoshop “Texture/Granulosità” che riduce o elimina del tutto il banding. Per i valori di questo effetto puoi fare riferimento a questa schermata da applicare a tutti i contenuti il cui lato corto sia di 1080px:
+
+![](/img-docs/social-sfumatura-illustrator.jpg)
+
+Le applicazioni di grafica raster (come Adobe Photoshop) invece non sono oggetto di questo artefatto se si utilizza un profilo colore ad almeno 16 bit.
+
+## Font e dimensioni del testo
+
+Il font da utilizzare è NOTO SANS in qualunque variante sia utile per enfatizzare il messaggio da comunicare (\*\*). Per le dimensioni del testo, in base al formato scelto per la creazione del contenuto, fai riferimento alla sezione “Web / Tipografia / CSS” di Shape. Qualora ci fosse bisogno di dimensioni in pixel/punti maggiori puoi incrementare per multipli di 8.
+
+La dimensione del testo più grande utilizzata per il web corrisponde a “Heading-100” ovvero 48px. Se hai bisogno di dimensioni ancora maggiori ti basta aggiungere 8px alla misura precedente. In questo caso quindi 48px +8px = 56px | +8px = 64px | +8px = 72px | +8px = 80px | +8px = 88px | +8px = 96px | ...
+
+La dimensione corretta da utilizzare viene definita in base alla quantità di testo da inserire nel contenuto. Ecco alcuni esempi pratici:
+
+| ![](/img-docs/social-font-1.png)    | ![](/img-docs/social-font-2.png)    |
+| ----------------------------------- | ----------------------------------- |
+| Dimensione testo immagine 1 = 128px | Dimensione testo immagine 2 = 160px |
+
+**(\*\*) Nota**: Una volta creato un format non è possibile utilizzare le varianti del font (ad esempio bold) a piacere, a meno che la scelta non costituisca un miglioramento del format da rendere definitivo e applicare anche nei successivi utilizzi.
+
+## Decorazione del testo
+
+Per mettere in evidenza un messaggio importante, un titolo o un invito all’azione, utilizziamo le seguenti decorazioni per il testo, scegliendo quella più adatta a soddisfare le esigenze visive:
+
+### Effetto evidenziato
+
+<ColorButton client:visible variant="full" color={{ color: "#011e41", name: "brand-900" }} /> ,  <ColorButton client:visible variant="full" color={{ color: "#17ff88", name: "brand-accent" }} /> / <ColorButton client:visible variant="full" color={{ color: "#00df6d", name: "accent-bold" }} /> , con possibilità di testo bucato qualora volessimo mostrare l’immagine di sfondo
+
+![](/img-docs/social-decorazioni-1.png)
+
+### Parole in evidenza
+
+In alcuni contesti puoi evidenziare una o più parole in <ColorButton client:visible variant="full" color={{ color: "#17ff88", name: "brand-accent" }} /> colore  per rinforzare il significato del concetto da comunicare
+
+![](/img-docs/social-decorazioni-2.png)
+
+### Colorato
+
+<ColorButton client:visible variant="full" color={{ color: "#011e41", name: "brand-900" }} /> o  <ColorButton client:visible variant="full" color={{ color: "#17ff88", name: "brand-accent" }} /> / <ColorButton client:visible variant="full" color={{ color: "#00df6d", name: "accent-bold" }} /> 
+
+![](/img-docs/social-decorazioni-3.png)
+
+## Elementi grafici e icone
+
+Ai fini decorativi utilizzare una ripetizione del pittogramma del logo, detto “pattern” in <ColorButton client:visible variant="full" color={{ color: "#011e41", name: "brand-900" }} /> , <ColorButton client:visible variant="full" color={{ color: "#17ff88", name: "brand-accent" }} /> / <ColorButton client:visible variant="full" color={{ color: "#00df6d", name: "accent-bold" }} />   o bianco con qualsiasi modalità di fusione gradevole alla vista. In alternativa, utilizza solo il pittogramma con gli stessi colori elencati sopra: in tal modo poni evidenza su dei dettagli testuali come nome di persona, job title, location o data di un evento.
+
+![](/img-docs/social-icone.png)
+
+In contesti social o formali, attingi icone dalla libreria Font Awesome in stile “duotone”, scegliendo un colore tra <ColorButton client:visible variant="full" color={{ color: "#011e41", name: "brand-900" }} /> e <ColorButton client:visible variant="full" color={{ color: "#17ff88", name: "brand-accent" }} /> / <ColorButton client:visible variant="full" color={{ color: "#00df6d", name: "accent-bold" }} /> o facendo riferimento ai paragrafi “SFUMATURA E SFONDO” e “DECORAZIONE DEL TESTO” di questa sezione, ma sempre valutando prima il contesto.
+
+Dove possibile prediligi l’utilizzo di immagini autoprodotte che raffigurino gli uffici o scene di vita lavorativa. Quando invece non è possibile, fai riferimento ad una banca di immagini stock. Entrambe le librerie sono disponibili sul nostro server interno.
+
+## Logo
+
+L’utilizzo del logo nei contenuti visivi destinati ai social network dipende dal tipo di immagine proposta:
+
+* in caso di foto reali che rappresentano persone o ambienti di Centro Software, l’inserimento del logo è facoltativo in quanto si tratta di un contenuto facilmente riconoscibile e associabile all’azienda
+* se opti per un’immagine acquistata da librerie stock o per elementi puramente grafici, l’utilizzo del logo è necessario per rendere il contenuto personalizzato.
+
+# Extra
+
+## Emoji e gif
+
+Per alleggerire ed enfatizzare un concetto o attirare l’attenzione nelle storie di Instagram o in alcuni contenuti video utilizziamo emoji e GIF.
+
+Per selezionare le emoji da utilizzare fai riferimento alla versione 10.3 di iOS come da pagina web [https://emojipedia.org/apple/ios-10.3](https://emojipedia.org/apple/ios-10.3).
+
+👀😎🚀

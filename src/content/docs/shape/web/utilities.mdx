@@ -1,0 +1,157 @@
+---
+lead: Stili e utility aggiunti a framework bootstrap
+icon: fa-duotone fa-file-code
+code-snippet: html
+title: Shape utilities
+last_edited: '2026-04-28T08:36:18.585Z'
+auto_generated: false
+---
+
+## Testo
+
+### Statico
+
+<x-code-snippet lang="html">
+  <div>
+    <p class="text-heading">I'm a heading text.</p>
+    <p class="text-body">I'm a body text.</p>
+    <p class="text-body-secondary">I'm a body secondary text.</p>
+    <p class="text-body-tertiary">I'm a body tertiary text.</p>
+    <p class="text-accent">I'm a accent text.</p>
+    <p class="text-link">I'm a link text.</p>
+  </div>
+</x-code-snippet>
+
+Esempio
+
+<x-code-snippet lang="html">
+  <div>
+    <p class="text-heading h3"><strong>Lorem ipsum</strong></p>
+
+    <p class="text-body">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      Ut enim ad minim veniam, quis nostrud <span class="text-link">exercitation</span> ullamco laboris nisi ut aliquip ex ea commodo consequat
+    </p>
+
+    <p class="text-body-secondary">
+      <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</small>
+    </p>
+
+    <p class="text-body-tertiary">
+      <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</small>
+    </p>
+  </div>
+</x-code-snippet>
+
+Con sfondo `bg-brand-primary`
+
+<x-code-snippet lang="html" cssClass="bg-brand-primary">
+  <div class="bg-brand-primary">
+    <p class="text-heading h3"><strong>Lorem ipsum</strong></p>
+
+    <p class="text-body">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      Ut enim ad minim veniam, quis nostrud <span class="text-link">exercitation</span> ullamco laboris nisi ut aliquip ex ea commodo consequat
+    </p>
+
+    <p class="text-body-secondary">
+      <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</small>
+    </p>
+
+    <p class="text-body-tertiary">
+      <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</small>
+    </p>
+  </div>
+</x-code-snippet>
+
+### Gradiente
+
+<x-code-snippet lang="html">
+  <div>
+    <p class="text-gradient text-brand-primary"><strong>I'm a brand gradient text.</strong></p>
+    <p class="text-gradient text-brand-accent"><strong>I'm a accent gradient text.</strong></p>
+    <p class="text-gradient text-brand-accent2"><strong>I'm a accent2 gradient text.</strong></p>
+    <p class="text-gradient text-brand-secondary"><strong>I'm a primary gradient text.</strong></p>
+  </div>
+</x-code-snippet>
+
+## Sfondo
+
+### Statico
+
+<x-code-snippet lang="html">
+  <div>
+    <div class="bg-brand-primary text-center py-3 text-white rounded border mb-2">Background brand primary</div>
+    <div class="bg-brand-secondary text-center py-3 text-white rounded border mb-2">Background brand secondary</div>
+    <div class="bg-brand-neutral text-center py-3 rounded border mb-2">Background brand neutral</div>
+    <div class="bg-body text-center py-3 rounded border mb-2">Background body</div>
+  </div>
+</x-code-snippet>
+
+### Gradiente
+
+<x-code-snippet lang="html">
+  <div>
+    <div class="bg-gradient-brand-primary text-center py-3 text-white rounded mb-2">Gradient background brand primary</div>
+    <div class="bg-gradient-brand-secondary text-center py-3 text-white rounded mb-2">Gradient background brand secondary</div>
+    <div class="bg-gradient-brand-neutral text-center py-3 rounded mb-2">Gradient background brand neutral</div>
+    <div class="bg-gradient-brand-accent text-center py-3 text-white rounded mb-2">Gradient background brand accent</div>
+    <div class="bg-gradient-brand-accent2 text-center py-3 text-white rounded mb-2">Gradient background brand accent2</div>
+  </div>
+</x-code-snippet>
+
+### Immagine
+
+<x-code-snippet lang="html">
+  <div class="d-flex">
+    <div class="card card-background card-background-mask-brand-primary mx-2 mb-2">
+      <div class="full-background" style="background-image: url('https://education.centrosoftware.com/template/assets/images/corsi-paola.jpg')" />
+
+      <div class="card-body text-center p-6"><p class="text-white up mb-0">Overlay brand primary</p></div>
+    </div>
+
+    <div class="card card-background card-background-mask-brand-secondary mx-2 mb-2">
+      <div class="full-background" style="background-image: url('https://education.centrosoftware.com/template/assets/images/corsi-paola.jpg')" />
+
+      <div class="card-body text-center p-6"><p class="text-white up mb-0">Overlay brand secondary</p></div>
+    </div>
+
+    <div class="card card-background card-background-mask-brand-neutral mx-2 mb-2">
+      <div class="full-background" style="background-image: url('https://education.centrosoftware.com/template/assets/images/corsi-paola.jpg')" />
+
+      <div class="card-body text-center p-6"><p class="up mb-0">Overlay brand neutral</p></div>
+    </div>
+
+    <div class="card card-background card-background-mask-brand-accent mx-2 mb-2">
+      <div class="full-background" style="background-image: url('https://education.centrosoftware.com/template/assets/images/corsi-paola.jpg')" />
+
+      <div class="card-body text-center p-6"><p class="text-white up mb-0">Overlay brand accent</p></div>
+    </div>
+
+    <div class="card card-background card-background-mask-brand-accent2 mx-2 mb-2">
+      <div class="full-background" style="background-image: url('https://education.centrosoftware.com/template/assets/images/corsi-paola.jpg')" />
+
+      <div class="card-body text-center p-6"><p class="text-white up mb-0">Overlay brand accent2</p></div>
+    </div>
+  </div>
+</x-code-snippet>
+
+## Bottoni
+
+<x-code-snippet lang="html">
+  <div>
+    <button type="button" class="btn btn-brand-accent">Accent</button>
+    <button type="button" class="btn btn-brand-primary">Primary</button>\
+    <button type="button" class="btn btn-brand-secondary">Secondary</button>
+  </div>
+</x-code-snippet>
+
+Con sfondo `bg-brand-primary`
+
+<x-code-snippet lang="html" cssClass="bg-brand-primary">
+  <div class="bg-brand-primary p-5">
+    <button type="button" class="btn btn-brand-accent">Accent</button>
+    <button type="button" class="btn btn-brand-primary">Primary</button>\
+    <button type="button" class="btn btn-brand-secondary">Secondary</button>
+  </div>
+</x-code-snippet>

@@ -1,0 +1,71 @@
+---
+lead: 'Font, stili e dimensioni del testo'
+icon: fa-duotone fa-font-case
+title: Tipografia Web
+last_edited: '2026-04-22T10:43:17.964Z'
+auto_generated: false
+---
+
+### Carattere
+
+#### Sans-serif
+
+**Noto** è stato scelto per il web per le seguenti ragioni:
+
+* Leggibilità: Le sue forme semplici e aperte lo rendono facile da leggere su schermi digitali, anche a piccole dimensioni.
+* Versatilità: La sua ampia famiglia di stili offre diverse opzioni per soddisfare le esigenze di diverse applicazioni web.
+* Accessibilità: Noto è un carattere open-source, il che significa che è gratuito da utilizzare e distribuire.
+
+![](/img-docs/foundation-type-noto.png)
+
+#### Monospace
+
+**Consolas** è un carattere tipografico monospazio progettato da Microsoft nel 2006. La sua natura moderna e funzionale lo rende ideale per diverse applicazioni all'interno del tuo design system.
+
+* Monospazio: ogni carattere occupa lo stesso spazio, garantendo una leggibilità eccellente per codici, tabelle e testi tecnici.
+* Design chiaro e moderno: le forme geometriche e le linee pulite di Consolas donano un aspetto elegante e professionale al tuo design.
+
+### Stack
+
+Uno stack di font è una serie di font, elencati in ordine di preferenza, che viene utilizzato in una proprietà CSS come font-family. Se il primo font non è disponibile sul dispositivo dell'utente, il browser utilizzerà il secondo, e così via.
+Lo stack garantisce che il tuo design appaia come previsto su un'ampia gamma di dispositivi e sistemi operativi, anche se non tutti gli utenti hanno installato lo stesso set di font.
+
+```css
+--shp-font-sans-serif:    "Noto Sans", system-ui, -apple-system, "Segoe UI", 
+                          Roboto, "Helvetica Neue", "Liberation Sans", Arial, 
+                          sans-serif, "Apple Color Emoji", "Segoe UI Emoji", 
+                          "Segoe UI Symbol", "Noto Color Emoji";      
+
+--shp-font-monospace:     Consolas, SFMono-Regular, Menlo, Monaco, 
+                          "Liberation Mono", "Courier New", monospace;
+```
+
+### Dimensioni
+
+Mantenere la coerenza della tipografia e attenersi a gerarchie logiche garantisce che gli elementi nell'interfaccia utente siano chiari e facilmente riconoscibili durante la scansione della pagina. Le dimensioni del testo, gli stili e i layout sono stati selezionati per bilanciare il contenuto e l'interfaccia utente e favorire la familiarità.
+
+Abbiamo adottato una dimensione base di `16px` (equivalente a `1rem`) come punto di partenza per la nostra scala, fornendo una base solida per la leggibilità e l'accessibilità. Da questa dimensione base utilizzate, abbiamo sviluppato una serie di incrementi proporzionali che riflettono la gerarchia visiva dei contenuti, consentendo una graduale e intuitiva differenziazione tra titoli, sottotitoli e corpo del testo.
+Questa approccio ci permette di mantenere coerenza stilistica e facilità di lettura in tutto il sistema di design.
+
+#### Titoli
+
+|             |      |      |           |
+| ----------- | ---- | ---- | --------- |
+| heading-100 | h100 | 48px | 3 rem     |
+| heading-200 | h200 | 40px | 2.5 rem   |
+| heading-300 | h300 | 32px | 2 rem     |
+| heading-400 | h400 | 28px | 1.75 rem  |
+| heading-500 | h500 | 24px | 1.5 rem   |
+| heading-600 | h600 | 20px | 1.25 rem  |
+| heading-700 | h700 | 16px | 1 rem     |
+| heading-800 | h800 | 14px | 0.875 rem |
+| heading-900 | h900 | 12px | 0.75 rem  |
+
+#### Testo
+
+|                |      |           |                        |         |
+| -------------- | ---- | --------- | ---------------------- | ------- |
+| font-size-lg   | 18px | 1.125 rem | `--shp-text-size-lg`   |         |
+| font-size-base | 16px | 1 rem     | `--shp-text-size-base` | Default |
+| font-size-sm   | 14px | 0.875 rem | `--shp-text-size-sm`   |         |
+| font-size-xs   | 12px | 0.75 rem  | `--shp-text-size-xs`   |         |

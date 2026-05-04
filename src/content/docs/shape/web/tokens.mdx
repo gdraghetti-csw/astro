@@ -1,0 +1,143 @@
+---
+lead: Definizione e utilizzo dei web tokens nel design system
+icon: fa-duotone fa-grid-2
+title: Design Token
+last_edited: '2026-04-27T06:57:06.528Z'
+auto_generated: false
+---
+
+import ColorButton from '../../../../components/cs-color-button.tsx';
+
+I design token sono la chiave per creare un sistema di design coeso e scalabile. Si tratta di variabili che memorizzano i valori di design ricorrenti, come colori, caratteri, dimensioni e spaziature. Invece di utilizzare valori statici, come codici esadecimali per i colori, i design token utilizzano nomi autoesplicativi che rendono il codice più comprensibile e manutenibile.
+
+I vantaggi dell'utilizzo di design token includono:
+
+* **Coerenza**: Assicura uniformità nell'aspetto dell'interfaccia utente attraverso pagine e piattaforme.
+* **Efficienza**: Riduce i tempi di progettazione e sviluppo grazie alla riutilizzabilità dei valori.
+* **Manutenibilità**: Cambiare il look del tuo prodotto diventa facile; basta modificare i token in un punto centrale per applicare aggiornamenti ovunque.
+* **Accessibilità**: Supporta l'implementazione di requisiti di accessibilità nel design.
+
+### Struttura
+
+![](/img-docs/colors-tokens.png)
+
+I design token sono  organizzati in una gerarchia:
+
+* **Token Primitivi (Primitive Tokens)**: Sono la base. Contengono solamente un nome e un valore semplice.  I token primitivi sono tipicamente tenuti privati all'interno del team che gestisce il design system, per garantire il controllo sulla loro evoluzione.
+* **Token Semantici (Semantic Tokens)**: Derivano dai token primitivi, aggiungendo un livello di significato contestuale. Il nome del token semantico ne descrive lo scopo d'uso. Questi token formano l'interfaccia esposta agli sviluppatori che costruiranno l'interfaccia utente.
+
+### Token semantici
+
+#### Colori
+
+##### Sfondo
+
+|                            |                                                                                       |
+| -------------------------- | ------------------------------------------------------------------------------------- |
+| `--shp-bg-body`            | <ColorButton client:visible variant="color" color={{ color: "#ffffff", name: "white" }} />           |
+| `--shp-bg-brand-primary`   | <ColorButton client:visible variant="color" color={{ color: "#011e41", name: "brand-900" }} />       |
+| `--shp-bg-brand-secondary` | <ColorButton client:visible variant="color" color={{ color: "#153f70", name: "brand-600" }} />       |
+| `--shp-bg-brand-neutral`   | <ColorButton client:visible variant="color" color={{ color: "#f4f6f9", name: "brand-0" }} />         |
+| `--shp-bg-brand-accent`    | <ColorButton client:visible variant="color" color={{ color: "#17ff88", name: "brand-accent" }} />    |
+| `--shp-bg-brand-accent2`   | <ColorButton client:visible variant="color" color={{ color: "#000000", name: "primitive-black" }} /> |
+
+##### Testo
+
+|                             |                                                                                                                           |
+| --------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| `--shp-text-headings`       | <ColorButton client:visible variant="color" color={{ color: "#042d58", name: "brand-800" }} />                                           |
+| `--shp-text-body`           | <ColorButton client:visible variant="color" color={{ color: "#1e1e1e", name: "gray-900" }} />                                            |
+| `--shp-text-body-secondary` | <ColorButton client:visible variant="color" color={{ color: "#808080", name: "gray-500" }} />                                            |
+| `--shp-text-body-tertiary`  | <ColorButton client:visible variant="color" color={{ color: "#b1b1b1", name: "gray-300" }} />                                            |
+| `--shp-text-accent`         | <ColorButton client:visible variant="color" color={{ color: "#00df6d", name: "accent-bold" }} />                                         |
+| `--shp-text-link`           | <ColorButton client:visible variant="color" color={{ color: "#3093ef", name: "blue-500" }} />                                            |
+| `--shp-text-color-success`  | <ColorButton client:visible variant="color" color={{ color: "#47c187", name: "green-400" }} />                                           |
+| `--shp-text-color-info`     | <ColorButton client:visible variant="color" color={{ color: "#59a9f2", name: "blue-400"}} /> |
+| `--shp-text-color-warning`  | <ColorButton client:visible variant="color" color={{ color: "#f29159", name: "orange-400" }} />                                          |
+| `--shp-text-color-danger`   | <ColorButton client:visible variant="color" color={{ color: "#f25959", name: "red-400" }} />                                             |
+
+Testo su sfondo brand
+
+|                                     |                                                                                    |
+| ----------------------------------- | ---------------------------------------------------------------------------------- |
+| `--shp-text-headings-onbrand`       | <ColorButton client:visible variant="color" color={{ color: "#fafafa", name: "gray-0" }} />       |
+| `--shp-text-body-onbrand`           | <ColorButton client:visible variant="color" color={{ color: "#c9c9c9", name: "gray-200" }} />     |
+| `--shp-text-body-secondary-onbrand` | <ColorButton client:visible variant="color" color={{ color: "#989898", name: "gray-400" }} />     |
+| `--shp-text-body-tertiary-onbrand`  | <ColorButton client:visible variant="color" color={{ color: "#686868", name: "gray-600" }} />     |
+| `--shp-text-accent-onbrand`         | <ColorButton client:visible variant="color" color={{ color: "#17ff88", name: "brand-accent" }} /> |
+| `--shp-text-link-onbrand`           | <ColorButton client:visible variant="color" color={{ color: "#3093ef", name: "blue-500" }} />     |
+
+##### Bottoni
+
+|                               |                                                                                    |
+| ----------------------------- | ---------------------------------------------------------------------------------- |
+| `--shp-btn-primary`           | <ColorButton client:visible variant="color" color={{ color: "#153f70", name: "brand-600" }} />    |
+| `--shp-btn-secondary`         | <ColorButton client:visible variant="color" color={{ color: "#e4e8ed", name: "brand-50" }} />     |
+| `--shp-btn-secondary-onbrand` | <ColorButton client:visible variant="color" color={{ color: "#042d58", name: "brand-800" }} />    |
+| `--shp-btn-accent`            | <ColorButton client:visible variant="color" color={{ color: "#17ff88", name: "brand-accent" }} /> |
+
+##### Gradienti
+
+|                             |                                                                                                                             |
+| --------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| `--shp-grd-brand-primary`   | <ColorButton client:visible variant="color" color={{ color: "linear-gradient(90deg, #011e41 0%, #0b3765 100%)", name: "grd-primary"}} />   |
+| `--shp-grd-brand-secondary` | <ColorButton client:visible variant="color" color={{ color: "linear-gradient(90deg, #153f70 0%, #284c7b 100%)", name: "grd-secondary"}} /> |
+| `--shp-grd-brand-accent`    | <ColorButton client:visible variant="color" color={{ color: "linear-gradient(90deg, #17ff88 0%, #00df6d 100%)", name: "grd-accent"}} />    |
+| `--shp-grd-brand-accent2`   | <ColorButton client:visible variant="color" color={{ color: "linear-gradient(90deg, #26A8FA 0%, #66FFB1 100%)", name: "grd-accent2"}} />   |
+| `--shp-grd-brand-neutral`   | <ColorButton client:visible variant="color" color={{ color: "linear-gradient(90deg, #e4e8ed 0%, #f4f6f9 100%)", name: "grd-neutral"}} />   |
+
+#### Spacing
+
+|                  |                 |
+| ---------------- | --------------- |
+| `--shp-space-0`  | 0px / 0 rem     |
+| `--shp-space-1`  | 4px / 0.25 rem  |
+| `--shp-space-2`  | 8px / 0.5 rem   |
+| `--shp-space-3`  | 12px / 0.75 rem |
+| `--shp-space-4`  | 16px / 1 rem    |
+| `--shp-space-5`  | 24px / 1.5 rem  |
+| `--shp-space-6`  | 32px / 2 rem    |
+| `--shp-space-7`  | 40px / 2.5 rem  |
+| `--shp-space-8`  | 48px / 3 rem    |
+| `--shp-space-9`  | 56px / 3.5 rem  |
+| `--shp-space-10` | 64px / 4 rem    |
+| `--shp-space-11` | 72px / 4.5 rem  |
+| `--shp-space-12` | 80px / 5 rem    |
+| `--shp-space-13` | 88px / 5.5 rem  |
+| `--shp-space-14` | 96px / 6 rem    |
+
+#### Dimensione testo
+
+##### Contenuto
+
+|                        |                 |
+| ---------------------- | --------------- |
+| `--shp-text-size-xs`   | 12px / 0.75rem  |
+| `--shp-text-size-sm`   | 14px / 0.875rem |
+| `--shp-text-size-base` | 16px / 1 rem    |
+| `--shp-text-size-lg`   | 18px / 1.125rem |
+
+##### Titoli
+
+|                        |      |
+| ---------------------- | ---- |
+| `--shp-text-size-h100` | 48px |
+| `--shp-text-size-h200` | 40px |
+| `--shp-text-size-h300` | 32px |
+| `--shp-text-size-h400` | 28px |
+| `--shp-text-size-h500` | 24px |
+| `--shp-text-size-h600` | 20px |
+
+### Casi d'uso
+
+Con sfondo `--shp-bg-brand-primary`
+
+![](/img-docs/colors-usecase-primary.png)
+
+Con sfondo `--shp-bg-brand-neutral`
+
+![](/img-docs/colors-usecase-neutral.png)
+
+Con sfondo `--shp-bg-body`
+
+![](/img-docs/colors-usecase-white.png)
