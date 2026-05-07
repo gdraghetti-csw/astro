@@ -37,7 +37,7 @@ export default function CardGrid (data: {
                   {card.title}
                 </h4>
 
-                <p className="text-neutral-text mb-10 leading-snug">
+                <p className="text-neutral-text mb-10 leading-snug h-full">
                   {card.description || ""}
                 </p>
 

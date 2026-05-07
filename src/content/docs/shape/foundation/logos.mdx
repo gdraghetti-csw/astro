@@ -1,9 +1,12 @@
 ---
 lead: Guida per l'uso corretto dei loghi aziendali
 title: Loghi
-last_edited: '2026-04-21T14:28:48.266Z'
+last_edited: '2026-05-05T12:27:58.523Z'
 auto_generated: false
 ---
+
+
+import CardGrid from '../../../../components/card-grid.tsx';
 
 Questa sezione è stata progettata per raccogliere in un unico punto tutte le indicazioni fondamentali per il corretto utilizzo dei loghi aziendali. Si è scelto di suddividere i loghi in tre pagine principali per coprire tutti gli aspetti dei nostri loghi.
 
@@ -15,10 +18,28 @@ Infine, la pagina **Archivio storico** raccoglie i loghi non più in uso e ne mo
 
 Ti invitiamo a consultare le singole pagine per ottenere informazioni dettagliate e aggiornate sull'uso corretto dei nostri loghi. Per qualsiasi domanda o chiarimento, non esitare a contattare il team Marketing.
 
-<cardGrid
+<CardGrid client:visible
   cards={[
-    { title: "Loghi azienda", link: "/docs/shape/foundation/logos/company", description:"", image:"", icon:"pippo" },
-    { title: "Loghi prodotti", link: "/docs/shape/foundation/logos/products", description:"", image:"", icon:"pippo" },
-    { title: "Archivio", link: "/docs/shape/foundation/logos/archive", description:"", image:"", icon:"pippo" }
+    {
+      title: "Loghi azienda",
+      link:"/shape/foundation/logos/company",
+      description: "",
+      image: "",
+      icon: "fa-duotone fa-solid fa-rectangle-history"
+    },
+    {
+      title: "Loghi prodotti",
+      link:"/shape/foundation/logos/products",
+      description: "",
+      image: "",
+      icon: "fa-duotone fa-solid fa-rectangle-history"
+    },
+    {
+      title: "Archivio",
+      link:"/shape/foundation/logos/archive",
+      description: "",
+      image: "",
+      icon: "fa-duotone fa-solid fa-box-archive"
+    }
   ]}
 />

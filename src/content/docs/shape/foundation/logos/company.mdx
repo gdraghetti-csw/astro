@@ -1,11 +1,13 @@
 ---
 lead: Linee guida per l'uso corretto del logo aziendale
 title: Logo Centro Software
-last_edited: '2026-04-23T09:47:10.597Z'
+last_edited: '2026-05-05T13:09:16.403Z'
 auto_generated: false
 ---
 
+
 import Callout from '../../../../../components/callout.tsx';
+import ColorButton from '../../../../../components/cs-color-button.tsx';
 
 Questa guida è stata creata per garantire coerenza e integrità nell'uso del marchio in tutti i contesti e in tutti gli impieghi, sia nei contenuti digitali che nel materiale destinato alla stampa.
 
@@ -117,24 +119,16 @@ I colori verde acceso possono essere difficili da ottenere con la stampa CMYK. Q
 Per cercare di riprodurre più fedelmente i colori originali del logo è stata predisposta una versione solo per materiale ad uso stampa.
 La differenza tra le due versioni è nel colore verde della freccia che nella versione destinata alla stampa è meno brillante
 
-<Callout
-    client:visible
+![](/img-docs/foundation-logo-print.png)
+
+<ColorButton client:visible color={{ color: "#71cc98", name: "Freccia" }} variant="full" />
+
+<Callout client:visible
   children={<>
     **NB**: l’utilizzo di questa versione del logo è riservata esclusivamente al reparto Marketing e viene riportata in questa guida ai soli fini informativi.
   </>}
   variant="info"
 />
-
-```
-<div class="row">
-    <div class="col-auto">
-        ![](/img-docs/foundation-logo-print.png)
-    </div>
-    <div class="col offset-md-1">
-        <x-color-card name="Freccia" hex="#71CC98" cmyk="C: 55 M: 0 Y: 53 K: 0" />
-    </div>
-</div>
-```
 
 ## Spaziatura e dimensioni minime
 

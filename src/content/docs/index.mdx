@@ -14,7 +14,7 @@ template: splash # Remove or comment out this line to display the site sidebar o
 
 import CardGrid  from '../../components/card-grid.tsx'
 
-<section className="flex flex-col items-center text-center h-70">
+<section className="flex flex-col items-center text-center h-55">
   <img src="/src/assets/shape_logo_dark.svg" className="mx-auto mb-6 w-140" />
   
   <h3 className="text-4xl font-bold mb-4">
@@ -59,6 +59,7 @@ import CardGrid  from '../../components/card-grid.tsx'
             <a
               key={i}
               href={item.href}
+              style={{ color: "black" }}
               className="flex items-center justify-between gap-3 p-4 hover:bg-green-50 transition"
             >
               <span className="flex items-center gap-3">

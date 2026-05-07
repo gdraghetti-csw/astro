@@ -24,13 +24,18 @@ export default function ColorButton({ color, variant = "full" }: Props) {
   const [codiceColoreRgb, setcodiceColoreRgb] = useState("");
   const [codiceColoreCmyk, setcodiceColoreCmyk] = useState("");
   const [open, setOpen] = useState(false);
+  const [open1, setOpen1] = useState(false);
+  const [showIconName, setshowIconName] = useState(false);
+  const [showIconHex, setshowIconHex] = useState(false);
+  const [showIconRgb, setshowIconRgb] = useState(false);
+  const [showIconCmyk, setshowIconCmyk] = useState(false);
 
   const copyHex = (value: string) => {
     navigator.clipboard.writeText(value);
     setCopiedHex(true);
     setTimeout(() => {
       setCopiedHex(false);
-    }, 1500);
+    }, 1000);
   };
   const copyCmyk = (value: string) => {
     const cmyk = hexToCmyk(value);
@@ -39,7 +44,7 @@ export default function ColorButton({ color, variant = "full" }: Props) {
     setCopiedCmyk(true);
     setTimeout(() => {
       setCopiedCmyk(false);
-    }, 1500);
+    }, 1000);
   };
   const copyRgb = (value: string) => {
     const rgb = hexToRgb(value);
@@ -48,14 +53,14 @@ export default function ColorButton({ color, variant = "full" }: Props) {
     setCopiedRgb(true);
     setTimeout(() => {
       setCopiedRgb(false);
-    }, 1500);
+    }, 1000);
   };
   const copyName = (value: string) => {
     navigator.clipboard.writeText(value);
     setCopiedName(true);
     setTimeout(() => {
       setCopiedName(false);
-    }, 1500);
+    }, 1000);
   };
 
   const hexToCmyk = (hex: string): string => {
@@ -94,17 +99,42 @@ export default function ColorButton({ color, variant = "full" }: Props) {
 
   return (
     <span className=" inline-block">
-      {variant === "table" ? (
-        <button
-          onClick={() => setOpen(!open)}
-          style={{ background: value, color: getTextColorSimple(value as string), border: "1px solid #000" }}
-          className="px-1 py-1 rounded-md w-70"
-        >
-          <div className="h-5 rounded-md w-full flex items-center justify-between px-2">
-            <p style={{ margin: 0 }}>{name}</p>
-            <p style={{ margin: 0 }}>{value}</p>
-          </div>
-        </button>
+      { variant === "table" ? (
+        <div
+        className="flex flex-col items-end gap-1 p-3 w-45"
+        style={{background: value, color: getTextColorSimple(value as string)}}>
+          <p style={{ margin: 0}} 
+          onMouseEnter={()=>setshowIconName(!showIconName)}
+          onMouseLeave={()=>setshowIconName(!showIconName)}
+          onClick={() => name && copyName(name)}>
+            {copiedName ? "✅ copiato" : (
+              <span>
+                {showIconName && <i className="fa-duotone fa-solid fa-copy"></i>}{name}
+              </span>
+            )}
+          </p>
+          <p style={{ margin: 0}} 
+          onMouseEnter={()=>setshowIconHex(!showIconHex)}
+          onMouseLeave={()=>setshowIconHex(!showIconHex)}
+          onClick={() => {copyHex(value)}}>
+            {copiedHex ? "✅ copiato" : (
+              <span>
+                {showIconHex && <i className="fa-duotone fa-solid fa-copy"></i>}{value}
+              </span>
+            )}
+          </p>
+          <p style={{ margin: 0}} 
+          onMouseEnter={()=>setshowIconRgb(!showIconRgb)}
+          onMouseLeave={()=>setshowIconRgb(!showIconRgb)}
+          onClick={() => {copyRgb(value)}}>
+            {copiedRgb ? "✅ copiato" : (
+              <span>
+                {showIconRgb && <i className="fa-duotone fa-solid fa-copy"></i>}{hexToRgb(value)}
+              </span>
+            )}
+          </p>
+          {/* <i style={{ margin: 0}} className="fa-duotone fa-solid fa-circle-info" onClick={() => {setOpen1(!open1)}}></i> */}
+        </div>
       ) : variant === "full" ? (
         <button
           onClick={() => setOpen(!open)}
@@ -140,6 +170,28 @@ export default function ColorButton({ color, variant = "full" }: Props) {
           <br />
           <button onClick={() => name && copyName(name)}>{copiedName ? "✅ Nome copiato: " + name : "Copia Nome"}</button>
         </span>
+      )}
+      {open1 && (
+        <div
+          className="fixed inset-0 bg-black/50 flex items-center justify-center z-50"
+          onClick={() => setOpen1(false)}
+        >
+          <div
+            className="bg-white p-6 rounded-lg shadow-lg max-w-220"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <span className="w-1/3">
+                <button onClick={() => {copyHex(value)}}>{copiedHex ? "✅ HEX copiato: " + value : "Copia HEX"}</button>
+                <br />
+                <button onClick={() => copyRgb(value)}>{copiedRgb ? "✅ RGB copiato: " + codiceColoreRgb : "Copia RGB"}</button>
+                <br />
+                <button onClick={() => copyCmyk(value)}>{copiedCmyk ? "✅ CMYK copiato: " + codiceColoreCmyk : "Copia CMYK"}</button>
+                <br />
+                <button onClick={() => name && copyName(name)}>{copiedName ? "✅ Nome copiato: " + name : "Copia Nome"}</button>
+              </span>
+            <button onClick={() => setOpen1(false)}>Chiudi</button>
+          </div>
+        </div>
       )}
     </span>
   );

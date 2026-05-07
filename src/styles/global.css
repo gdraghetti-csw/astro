@@ -1,1 +1,5 @@
 @import "tailwindcss";
+
+.main-pane {
+    isolation: auto !important;
+}

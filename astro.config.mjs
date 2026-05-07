@@ -9,8 +9,11 @@ import tailwindcss from '@tailwindcss/vite';
 // https://astro.build/config
 export default defineConfig({
   integrations: [starlight({
-      title: 'My Docs',
+      title: '',
 	  customCss: ['./src/styles/global.css'],
+    components: {
+        SiteTitle: './src/components/SiteTitle.astro'
+      },
       social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/withastro/starlight' }],
       sidebar: [
           {
@@ -23,7 +26,7 @@ export default defineConfig({
         {
           tag: 'script',
           attrs: {
-            src: 'https://kit.fontawesome.com/71b1a7f21a.js', // 👈 il tuo kit
+            src: 'https://kit.fontawesome.com/71b1a7f21a.js', // 👈 il tuo kit fontawsome
             crossorigin: 'anonymous'
           }
         }
