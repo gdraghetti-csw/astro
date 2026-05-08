@@ -1,7 +1,8 @@
 ---
 lead: Linee guida per l'uso corretto del logo aziendale
+order: 14
 title: Logo Centro Software
-last_edited: '2026-05-05T13:09:16.403Z'
+last_edited: '2026-05-08T13:50:18.869Z'
 auto_generated: false
 ---
 
@@ -90,19 +91,11 @@ Si consiglia di utilizzare la versione digitale del logo in quasi tutti i contes
 
 ![](/img-docs/foundation-logo.png)
 
-```
-<div class="row">
-    <div class="col">
-        <x-color-card name="Logotype" hex="#011E41" />
-    </div>
-    <div class="col">
-        <x-color-card name="Freccia" hex="#17FF88" />
-    </div>
-    <div class="col">
-        <x-color-card name="Lead" hex="#00B95A" />
-    </div>
-</div>
-```
+<ColorButton client:visible color={{ color: "#011e41", name: "Logotype" }} variant="table" />
+
+<ColorButton client:visible color={{ color: "#17ff88", name: "Freccia" }} variant="table" />
+
+<ColorButton client:visible color={{ color: "#00b95a", name: "Lead" }} variant="table" />
 
 ### Versione per stampa (CMYK)
 
@@ -121,7 +114,7 @@ La differenza tra le due versioni è nel colore verde della freccia che nella ve
 
 ![](/img-docs/foundation-logo-print.png)
 
-<ColorButton client:visible color={{ color: "#71cc98", name: "Freccia" }} variant="full" />
+<ColorButton client:visible color={{ color: "#71cc98", name: "Freccia" }} variant="table" />
 
 <Callout client:visible
   children={<>

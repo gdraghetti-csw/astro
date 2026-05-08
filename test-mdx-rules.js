@@ -81,7 +81,6 @@ export const rules = [
         ? `</${c.name}`
         : `<${c.name}`,
   })),
-
   
   // 3. Aggiunge client:visible (se non già presente)
   ...COMPONENTS.map(c => ({
@@ -102,6 +101,18 @@ export const rules = [
     description: 'cardGrid: link="/docs/shape/..." -> link="/shape/..."',
     find: /link:\s*"\/docs(\/[^"]*)"/g,
     replace: 'link:"$1"',
+  },
+
+  // 6. aggiusta percorso dei link
+  {
+    description: 'Fix link markdown robusto',
+    find: /\[([^\]]+)\]\(([^)]+)\)/g,
+    replace: (match, text, url) => {
+      if (url.startsWith('/docs/shape/')) {
+        return `[${text}](${url.replace('/docs', '')})`;
+      }
+      return match;
+    },
   }
 ];
 

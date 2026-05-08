@@ -50,11 +50,13 @@ export default function TypeDefinition({ property = [] }: Props) {
                   <div className="w-full flex flex-col md:flex-row md:items-start gap-2">
 
                     {/* ICONA SINISTRA */}
-                    <div className="flex justify-start md:w-1/9">
-                          {prop.icon && (
-                            <i className={prop.icon} style={{ fontSize: "2.5rem", color: controlIconColor(prop.icon) }}></i>
-                          )}
-                      </div>
+                    { prop.icon &&
+                        <div className="flex justify-center md:w-1/9">
+                            {prop.icon && (
+                              <i className={prop.icon} style={{ fontSize: "2.5rem", color: controlIconColor(prop.icon) }}></i>
+                            )}
+                        </div>
+                    }
 
                     {/* CONTENUTO */}
                     <div className="flex-1 md:w-7/9">

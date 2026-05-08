@@ -12,6 +12,13 @@ type Props = {
   variant?: "full" | "table" | "compact";
 };
 
+  const gradienti : string[] = [
+  "linear-gradient(90deg, #e4e8ed 0%, #f4f6f9 100%)",
+  "linear-gradient(90deg, #26A8FA 0%, #66FFB1 100%)",
+  "linear-gradient(90deg, #17ff88 0%, #00df6d 100%)",
+  "linear-gradient(90deg, #153f70 0%, #284c7b 100%)",
+  "linear-gradient(90deg, #011e41 0%, #0b3765 100%)",
+]
 
 export default function ColorButton({ color, variant = "full" }: Props) {
   const value = typeof color === "string" ? color : color?.color;
@@ -24,7 +31,6 @@ export default function ColorButton({ color, variant = "full" }: Props) {
   const [codiceColoreRgb, setcodiceColoreRgb] = useState("");
   const [codiceColoreCmyk, setcodiceColoreCmyk] = useState("");
   const [open, setOpen] = useState(false);
-  const [open1, setOpen1] = useState(false);
   const [showIconName, setshowIconName] = useState(false);
   const [showIconHex, setshowIconHex] = useState(false);
   const [showIconRgb, setshowIconRgb] = useState(false);
@@ -98,42 +104,52 @@ export default function ColorButton({ color, variant = "full" }: Props) {
 };
 
   return (
-    <span className=" inline-block">
+    <span className="inline-block">
       { variant === "table" ? (
         <div
         className="flex flex-col items-end gap-1 p-3 w-45"
         style={{background: value, color: getTextColorSimple(value as string)}}>
-          <p style={{ margin: 0}} 
-          onMouseEnter={()=>setshowIconName(!showIconName)}
-          onMouseLeave={()=>setshowIconName(!showIconName)}
-          onClick={() => name && copyName(name)}>
-            {copiedName ? "✅ copiato" : (
-              <span>
-                {showIconName && <i className="fa-duotone fa-solid fa-copy"></i>}{name}
-              </span>
-            )}
-          </p>
-          <p style={{ margin: 0}} 
-          onMouseEnter={()=>setshowIconHex(!showIconHex)}
-          onMouseLeave={()=>setshowIconHex(!showIconHex)}
-          onClick={() => {copyHex(value)}}>
-            {copiedHex ? "✅ copiato" : (
-              <span>
-                {showIconHex && <i className="fa-duotone fa-solid fa-copy"></i>}{value}
-              </span>
-            )}
-          </p>
-          <p style={{ margin: 0}} 
-          onMouseEnter={()=>setshowIconRgb(!showIconRgb)}
-          onMouseLeave={()=>setshowIconRgb(!showIconRgb)}
-          onClick={() => {copyRgb(value)}}>
-            {copiedRgb ? "✅ copiato" : (
-              <span>
-                {showIconRgb && <i className="fa-duotone fa-solid fa-copy"></i>}{hexToRgb(value)}
-              </span>
-            )}
-          </p>
-          {/* <i style={{ margin: 0}} className="fa-duotone fa-solid fa-circle-info" onClick={() => {setOpen1(!open1)}}></i> */}
+            <div
+              className="!m-0 cursor-pointer font-bold"
+              onMouseEnter={() => setshowIconName(!showIconName)}
+              onMouseLeave={() => setshowIconName(!showIconName)}
+              onClick={() => name && copyName(name)}
+            >
+              {copiedName ? "✅ copiato" : (
+                <span>
+                  {showIconName && <i className="fa-duotone fa-solid fa-copy"></i>}
+                  {name}
+                </span>
+              )}
+            </div>
+
+            <div
+              className="!m-0 cursor-pointer font-light"
+              onMouseEnter={() => setshowIconHex(!showIconHex)}
+              onMouseLeave={() => setshowIconHex(!showIconHex)}
+              onClick={() => copyHex(value)}
+            >
+              {copiedHex ? "✅ copiato" : (
+                <span>
+                  {showIconHex && <i className="fa-duotone fa-solid fa-copy"></i>}
+                  {value}
+                </span>
+              )}
+            </div>
+
+            <div
+              className="!m-0 cursor-pointer font-light"
+              onMouseEnter={() => setshowIconRgb(!showIconRgb)}
+              onMouseLeave={() => setshowIconRgb(!showIconRgb)}
+              onClick={() => copyRgb(value)}
+            >
+              {copiedRgb ? "✅ copiato" : (
+                <span>
+                  {showIconRgb && <i className="fa-duotone fa-solid fa-copy"></i>}
+                  {hexToRgb(value)}
+                </span>
+              )}
+            </div>
         </div>
       ) : variant === "full" ? (
         <button
@@ -163,36 +179,54 @@ export default function ColorButton({ color, variant = "full" }: Props) {
       {open && (
         <span className="absolute m-2 p-3 bg-white shadow-lg rounded-md border z-10 w-fit min-w-45">
           <button onClick={() => {copyHex(value)}}>{copiedHex ? "✅ HEX copiato: " + value : "Copia HEX"}</button>
-          <br />
-          <button onClick={() => copyRgb(value)}>{copiedRgb ? "✅ RGB copiato: " + codiceColoreRgb : "Copia RGB"}</button>
-          <br />
-          <button onClick={() => copyCmyk(value)}>{copiedCmyk ? "✅ CMYK copiato: " + codiceColoreCmyk : "Copia CMYK"}</button>
-          <br />
-          <button onClick={() => name && copyName(name)}>{copiedName ? "✅ Nome copiato: " + name : "Copia Nome"}</button>
+                <br />
+                {
+                  !gradienti.includes(value) && (
+                    <>
+                      <button 
+                      onClick={() => copyRgb(value)}>{copiedRgb ? "✅ RGB copiato: " + codiceColoreRgb : "Copia RGB"}</button>
+                      <br />
+                      <button onClick={() => copyCmyk(value)}>{copiedCmyk ? "✅ CMYK copiato: " + codiceColoreCmyk : "Copia CMYK"}</button>
+                      <br />
+                    </>
+                  )
+                }
+                <button onClick={() => name && copyName(name)}>{copiedName ? "✅ Nome copiato: " + name : "Copia Nome"}</button>
         </span>
       )}
-      {open1 && (
+      {/* {open && (
         <div
           className="fixed inset-0 bg-black/50 flex items-center justify-center z-50"
-          onClick={() => setOpen1(false)}
+          onClick={() => setOpen(false)}
         >
           <div
-            className="bg-white p-6 rounded-lg shadow-lg max-w-220"
+            className="relative bg-white p-4 rounded-lg shadow-lg max-w-220"
             onClick={(e) => e.stopPropagation()}
           >
-            <span className="w-1/3">
+            <i
+              onClick={() => setOpen(false)}
+              className="absolute top-0 right-1 my-0 py-0 cursor-pointer fa-duotone fa-solid fa-xmark"
+            />
+            <div>
                 <button onClick={() => {copyHex(value)}}>{copiedHex ? "✅ HEX copiato: " + value : "Copia HEX"}</button>
                 <br />
-                <button onClick={() => copyRgb(value)}>{copiedRgb ? "✅ RGB copiato: " + codiceColoreRgb : "Copia RGB"}</button>
-                <br />
-                <button onClick={() => copyCmyk(value)}>{copiedCmyk ? "✅ CMYK copiato: " + codiceColoreCmyk : "Copia CMYK"}</button>
-                <br />
+                {
+                  !gradienti.includes(value) && (
+                    <>
+                      <button 
+                      onClick={() => copyRgb(value)}>{copiedRgb ? "✅ RGB copiato: " + codiceColoreRgb : "Copia RGB"}</button>
+                      <br />
+                      <button onClick={() => copyCmyk(value)}>{copiedCmyk ? "✅ CMYK copiato: " + codiceColoreCmyk : "Copia CMYK"}</button>
+                      <br />
+                    </>
+                  )
+                }
                 <button onClick={() => name && copyName(name)}>{copiedName ? "✅ Nome copiato: " + name : "Copia Nome"}</button>
-              </span>
-            <button onClick={() => setOpen1(false)}>Chiudi</button>
+              </div>
+              
           </div>
         </div>
-      )}
+      )} */}
     </span>
   );
 }
