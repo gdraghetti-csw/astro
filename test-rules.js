@@ -12,6 +12,11 @@ const __dirname = path.dirname(__filename);
 const inputDir = path.join(__dirname, '../tina2/content/docs/shape');
 const outputDir = path.join(__dirname, 'src/content/docs/shape');
 
+const notUse = [
+  ".gitkeep.mdx",
+  "companysuite.mdx",
+  "portal-icons-beta.mdx"
+]
 
 function getAllMdxFiles(dir) {
   const entries = fs.readdirSync(dir, { withFileTypes: true });
@@ -25,7 +30,7 @@ function getAllMdxFiles(dir) {
       files = files.concat(getAllMdxFiles(fullPath));
     }
 
-    if (entry.isFile() && entry.name.endsWith('.mdx') && entry.name !== '.gitkeep.mdx') {
+    if (entry.isFile() && entry.name.endsWith('.mdx') && !notUse.includes(entry.name)) {
       files.push(fullPath);
     }
   }
