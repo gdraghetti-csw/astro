@@ -3,7 +3,7 @@ import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import react from '@astrojs/react';
 import tailwindcss from '@tailwindcss/vite';
-// ho installato remark ma per ora lo uso SOLO per l'odinamento automatico delle pagine nella sidebar
+// ho installato remark ma lo uso SOLO per l'odinamento automatico delle pagine nella sidebar
 import astroExpressiveCode from 'astro-expressive-code';
 import mdx from '@astrojs/mdx';
 import remarkFixLinks from './src/remark/remark-fix-links.js';
