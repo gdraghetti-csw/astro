@@ -3,3 +3,26 @@
 .main-pane {
     isolation: auto !important;
 }
+
+main ol,
+main ul,
+main menu {
+    list-style: disc;
+    margin-left: 1.5rem;
+}
+
+.scale-box {
+  display: inline-block;
+  height: 20px;
+  border: 1px solid #b1b1b1;
+}
+.bg-normal{
+    background: #f4f6f9;
+}
+.bg-highlight{
+    background: #59a9f2;
+}
+/* colora TUTTA la riga usando nth-child */
+table tr:has(.scale-box.bg-highlight) {
+  color: #59a9f2;
+}

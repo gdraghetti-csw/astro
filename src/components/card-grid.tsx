@@ -20,7 +20,7 @@ export default function CardGrid (data: {
               className={cardClasses}
               key={`card-${index}-${card.title}`}
             >
-              <div className="bg-blue-500/10 py-6 flex items-center justify-center group-hover:bg-green-500/20 transition-colors">
+              <div className="bg-[#f4f6f9] rounded-lg py-6 flex items-center justify-center group-hover:bg-green-500/20 transition-colors">
                 {card.image && (
                   <img
                     src={card.image}

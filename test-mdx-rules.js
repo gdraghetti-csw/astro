@@ -108,11 +108,49 @@ export const rules = [
     description: 'Fix link markdown robusto',
     find: /\[([^\]]+)\]\(([^)]+)\)/g,
     replace: (match, text, url) => {
-      if (url.startsWith('/docs/shape/')) {
-        return `[${text}](${url.replace('/docs', '')})`;
+
+      // ✅ NON toccare link esterni o speciali
+      if (
+        url.startsWith('http://') ||
+        url.startsWith('https://') ||
+        url.startsWith('mailto:') ||
+        url.startsWith('#')
+      ) {
+        return match;
       }
-      return match;
+
+      let newUrl = url;
+
+      // ✅ rimuove TUTTI i prefissi indesiderati
+      newUrl = newUrl.replace(/^\/?(docs\/)?(shape\/)?/, '');
+
+      // ✅ aggiunge slash iniziale se manca
+      if (!newUrl.startsWith('/')) {
+        newUrl = `/${newUrl}`;
+      }
+
+      // ✅ ricostruisce sempre in modo pulito
+      return `[${text}](/shape${newUrl})`;
     },
+  },
+
+  // 7. aggiusta tabelle dello spacing
+  {
+    description: 'Fix tabelle spacing',
+    find: /^.*█+.*$/gm,
+    replace: (row) => {
+      const pxMatch = row.match(/(\d+)px/);
+      if (!pxMatch) return row;
+      const px = parseInt(pxMatch[1], 10);
+      // scegli qui i valori che vuoi evidenziare
+      const highlightPx = [0, 4, 12]; 
+      const isHighlighted = highlightPx.includes(px);
+      let newRow = row.replace(
+          /█+/g,
+          `<div class="scale-box ${isHighlighted ? 'bg-highlight' : 'bg-normal'}" style="width:${px}px;"></div>`
+        );
+        return newRow;
+    }
   }
 ];
 
