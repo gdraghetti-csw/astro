@@ -1,6 +1,38 @@
 ---
+import ThemeSelect from '@astrojs/starlight/components/ThemeSelect.astro';
+
+
+const token = Astro.cookies.get("auth")?.value;
+
+let user = null;
+
+if (token) {
+  const payload = JSON.parse(
+    Buffer.from(token.split(".")[1], "base64").toString()
+  );
+
+  user = payload;
+}
+
 ---
 
-<a href="/" class="sl-flex sl-items-center sl-gap-2">
-  <img src="/img-docs/shape_logo_dark.svg" alt="My Docs" class="h-6" />
-</a>
+
+<div class="flex items-center justify-beetwen gap-4 w-full">
+
+{user && (
+  <p class="text-sm w-fit">
+    {user.name}
+  </p>
+)}
+
+    <!-- logout -->
+    <a href="/api/auth/logout" class="flex items-center gap-1 px-3 hover:underline">
+      Logout
+    </a>
+
+  <!-- LOGO -->
+  <a href="/" class="flex items-center gap-2">
+    <img src="/img-docs/shape_logo_dark.svg" alt="My Docs" class="h-6" />
+  </a>
+
+</div>

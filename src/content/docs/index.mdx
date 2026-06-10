@@ -42,8 +42,8 @@ import CardGrid  from '../../components/card-grid.tsx'
       </p>
     </div>
 
-    <div className="md:col-span-4">
-      <div className="border rounded-xl overflow-hidden shadow-sm bg-white">
+    <div className="md:col-span-4" style="margin: 0">
+      <div className="border rounded-xl overflow-hidden shadow-sm">
 
         <div className="bg-brand-accent text-center py-3 font-semibold">
           Accesso rapido risorse
@@ -51,21 +51,24 @@ import CardGrid  from '../../components/card-grid.tsx'
 
         <div className="divide-y">
           {[
-            { label: "Modelli documenti", href: "/shape/resources/documents" },
-            { label: "Modelli presentazioni", href: "/shape/resources/presentations" },
-            { label: "Come scrivere contenuti", href: "/shape/content/overview" },
-            { label: "Libreria loghi", href: "/shape/resources/logos" },
+            { icon: "fa-duotone fa-solid fa-file-doc", label: "Modelli documenti", href: "/shape/resources/documents" },
+            { icon: "fa-duotone fa-solid fa-file-ppt", label: "Modelli presentazioni", href: "/shape/resources/presentations" },
+            { icon: "fa-duotone fa-solid fa-megaphone", label: "Come scrivere contenuti", href: "/shape/content/overview" },
+            { icon: "fa-duotone fa-solid fa-folder-image", label: "Libreria loghi", href: "/shape/resources/logos" },
           ].map((item, i) => (
             <a
               key={i}
               href={item.href}
               style={{ color: "black" }}
-              className="flex items-center justify-between gap-3 p-4 hover:bg-green-50 transition"
+              className="flex items-center justify-between p-4 hover:bg-green-50 transition"
             >
-              <span className="flex items-center gap-3">
-                {item.label}
+              <span class="flex items-center gap-3">
+                <i class={item.icon} style="font-size: 1.5em"></i>
+                <span className="flex items-center gap-3">
+                  {item.label}
+                </span>
               </span>
-              <span className="text-sm">↗</span>
+              <i class="fa-duotone fa-solid fa-arrow-up-right-from-square"></i>
             </a>
           ))}
 

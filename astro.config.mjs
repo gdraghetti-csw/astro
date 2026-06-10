@@ -1,8 +1,10 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import remarkGfm from 'remark-gfm';
 import react from '@astrojs/react';
 import tailwindcss from '@tailwindcss/vite';
+import node from '@astrojs/node';
 // ho installato remark ma lo uso SOLO per l'odinamento automatico delle pagine nella sidebar
 import astroExpressiveCode from 'astro-expressive-code';
 import mdx from '@astrojs/mdx';
@@ -15,6 +17,8 @@ import remarkComponents from './src/remark/remark-fix-components.js';
 
 // https://astro.build/config
 export default defineConfig({
+  output: "server",
+  adapter: node({mode: 'standalone'}),
   integrations: [
     /* astroExpressiveCode(),
     mdx({
@@ -28,12 +32,13 @@ export default defineConfig({
     }), */
 
     starlight({
+      prerender: false, // serve per evitare pagine statiche
       title: '',
 	    customCss: ['./src/styles/global.css'],
       components: {
-        SiteTitle: './src/components/SiteTitle.astro'
+        Header: './src/components/Header.astro'
       },
-      social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/withastro/starlight' }],
+      /* social: [{ icon: 'github', label: 'Shape GitHub', href: 'https://github.com/centrosoftware-cloud/shape-docs' }], */
       sidebar: [
           {
               label: "Shape",
@@ -61,7 +66,9 @@ export default defineConfig({
     react(),
 
   ],
-
+  markdown: {
+    remarkPlugins: [remarkGfm], // <-- Forza il rendering delle tabelle ovunque
+  },
   vite: {
     plugins: [tailwindcss()],
   },

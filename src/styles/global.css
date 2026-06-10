@@ -4,6 +4,11 @@
     isolation: auto !important;
 }
 
+/* HEADER */
+site-search button {
+  width: fit-content !important;
+}
+
 main ol,
 main ul,
 main menu {

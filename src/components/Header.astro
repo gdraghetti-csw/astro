@@ -1,0 +1,101 @@
+---
+import Search from '@astrojs/starlight/components/Search.astro';
+
+const token = Astro.cookies.get("auth")?.value;
+
+let user = null;
+let initials = "";
+
+if (token) {
+  const payload = JSON.parse(
+    Buffer.from(token.split(".")[1], "base64").toString()
+  );
+
+  user = payload;
+
+  if (user?.name) {
+    initials = user.name
+      .split(" ")
+      .map((n) => n[0])
+      .join("")
+      .toUpperCase()
+      .slice(0, 2);
+  }
+}
+
+const colors = ["bg-[#011E41]", "bg-[#153F70]", "bg-[#00DF6D]"];
+const color = colors[user.name.length % colors.length];
+---
+
+<div style="width: 100%" class="flex items-center justify-beetween gap-6 w-full">
+
+{user && (
+  <div >
+    <!-- AVATAR -->
+    <button id="userButton" class="flex gap-2 items-center">
+      <span
+        class=`${color} w-8 h-8 rounded-full  text-white flex items-center justify-center text-sm font-semibold`
+      >
+        {initials}
+      </span>
+      <span class="flex gap-0 items-center">
+        {user.name}
+        <span class="grayscale opacity-50">🔻</span>
+      </span>
+    </button>
+
+        <!-- MENU -->
+    <div
+      id="userMenu"
+      class="hidden absolute left-5 top-15 mt-2 bg-[#f6f7f9] border border-gray-400 rounded shadow p-2 hover:bg-blue-600 hover:text-white"
+    >
+      <a 
+        href="/api/auth/logout"
+        class="block px-3 py-1 text-sm"
+      >
+        Logout
+      </a>
+    </div>
+
+  </div>
+)}
+
+<!-- LOGO -->
+  <a href="/" class="flex items-center gap-2" style="margin: auto">
+    <img src="/img-docs/shape_logo_dark.svg" alt="My Docs" class="h-6" />
+  </a>
+
+  <Search />
+
+</div>  
+
+<script>
+  // Raggruppiamo la logica dentro una funzione per evitare errori se gli elementi non esistono nella pagina
+  function initMenu() {
+    const button = document.getElementById("userButton");
+    const menu = document.getElementById("userMenu");
+
+    // Se l'utente non è loggato, gli elementi non esistono. Interrompiamo l'esecuzione.
+    if (!button || !menu) return;
+
+    // Gestione del click sul bottone per mostrare/nascondere
+    button.addEventListener("click", (e) => {
+      e.stopPropagation(); // Impedisce al click di propagarsi immediatamente al document
+      menu.classList.toggle("hidden");
+    });
+
+    // Gestione del click all'esterno per chiudere il menu
+    document.addEventListener("click", (e) => {
+      const target = e.target as Node;
+      if (!button.contains(target) && !menu.contains(target)) {
+        menu.classList.add("hidden");
+      }
+    });
+  }
+
+  // Esegui la logica al caricamento della pagina
+  initMenu();
+
+  // Se usi le transizioni di Astro (View Transitions), scommenta la riga sotto:
+  // document.addEventListener('astro:page-load', initMenu);
+</script>
