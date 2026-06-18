@@ -4,8 +4,6 @@ export const GET: APIRoute = ({ redirect }) => {
   const clientId = import.meta.env.MS_CLIENT_ID;
   const tenantId = import.meta.env.MS_TENANT_ID;
 
-  console.log("CLIENT ID:", import.meta.env.MS_CLIENT_ID);
-
   const redirectUri = "http://localhost:4321/api/auth/callback";
 
   const url = `https://login.microsoftonline.com/${tenantId}/oauth2/v2.0/authorize?` +

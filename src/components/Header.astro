@@ -1,5 +1,4 @@
 ---
-import Search from '@astrojs/starlight/components/Search.astro';
 
 const token = Astro.cookies.get("auth")?.value;
 
@@ -7,24 +6,28 @@ let user = null;
 let initials = "";
 
 if (token) {
-  const payload = JSON.parse(
-    Buffer.from(token.split(".")[1], "base64").toString()
-  );
+  
+  try {
+    const payload = JSON.parse(
+      Buffer.from(token.split(".")[1], "base64").toString()
+    );
 
-  user = payload;
+    user = payload;
 
-  if (user?.name) {
-    initials = user.name
-      .split(" ")
-      .map((n) => n[0])
-      .join("")
-      .toUpperCase()
-      .slice(0, 2);
-  }
+    if (user?.name) {
+      initials = user.name
+        .split(" ")
+        .map((n) => n[0])
+        .join("")
+        .toUpperCase()
+        .slice(0, 2);
+    }
+  } catch {}
+
 }
 
 const colors = ["bg-[#011E41]", "bg-[#153F70]", "bg-[#00DF6D]"];
-const color = colors[user.name.length % colors.length];
+const color = colors[user?.name.length % colors.length];
 ---
 
 <div style="width: 100%" class="flex items-center justify-beetween gap-6 w-full">
@@ -34,12 +37,12 @@ const color = colors[user.name.length % colors.length];
     <!-- AVATAR -->
     <button id="userButton" class="flex gap-2 items-center">
       <span
-        class=`${color} w-8 h-8 rounded-full  text-white flex items-center justify-center text-sm font-semibold`
+        class=`bg-[#4E668B] w-8 h-8 rounded-full text-white flex items-center justify-center text-sm font-semibold`
       >
         {initials}
       </span>
       <span class="flex gap-0 items-center">
-        {user.name}
+        {user?.name}
         <span class="grayscale opacity-50">🔻</span>
       </span>
     </button>
@@ -47,7 +50,7 @@ const color = colors[user.name.length % colors.length];
         <!-- MENU -->
     <div
       id="userMenu"
-      class="hidden absolute left-5 top-15 mt-2 bg-[#f6f7f9] border border-gray-400 rounded shadow p-2 hover:bg-blue-600 hover:text-white"
+      class="hidden absolute left-5 top-15 mt-2 bg-[#f6f7f9] border border-gray-400 rounded shadow p-2 hover:bg-green-50"
     >
       <a 
         href="/api/auth/logout"
@@ -65,7 +68,23 @@ const color = colors[user.name.length % colors.length];
     <img src="/img-docs/shape_logo_dark.svg" alt="My Docs" class="h-6" />
   </a>
 
-  <Search />
+<!-- SEARCH -->
+<div class="relative">
+  <input
+    id="searchInput"
+    type="text"
+    placeholder="Cerca..."
+    class="border px-3 py-1 rounded w-fit"
+  />
+
+  <div
+    id="searchResults"
+    class="absolute top-10 right-0 w-80 min-h-[22em] bg-white border rounded shadow hidden z-50"
+  ></div>
+</div>
+
+
+
 
 </div>  
 
@@ -96,6 +115,70 @@ const color = colors[user.name.length % colors.length];
   // Esegui la logica al caricamento della pagina
   initMenu();
 
-  // Se usi le transizioni di Astro (View Transitions), scommenta la riga sotto:
-  // document.addEventListener('astro:page-load', initMenu);
+  document.addEventListener("DOMContentLoaded", () => {
+    console.log("Search attiva ✅");
+
+    const client = window.algoliasearch(
+      import.meta.env.PUBLIC_ALGOLIA_APP_ID,
+      import.meta.env.PUBLIC_ALGOLIA_SEARCH_KEY
+    );
+
+    const index = client.initIndex("docs");
+
+    const input = document.getElementById("searchInput");
+    const resultsBox = document.getElementById("searchResults");
+
+    if (!input || !resultsBox) {
+      console.log("Input non trovato");
+      return;
+    }
+
+    input.addEventListener("input", async (e) => {
+      const query = e.target.value.trim();
+
+      if (!query) {
+        resultsBox.innerHTML = "";
+        resultsBox.classList.add("hidden");
+        return;
+      }
+
+      const res = await index.search(query);
+
+      if (!res.hits.length) {
+        resultsBox.innerHTML = "<p class='p-2'>Nessun risultato</p>";
+        resultsBox.classList.remove("hidden");
+        return;
+      }
+      
+      // ✅ rimuove duplicati per URL
+      const uniqueHits = Object.values(
+        res.hits.reduce((acc, hit) => {
+          if (!acc[hit.url]) {
+            acc[hit.url] = hit;
+          }
+          return acc;
+        }, {})
+      );
+
+      resultsBox.innerHTML = uniqueHits
+      .map(hit => `
+        <a href="${hit.url}" class="block px-3 py-2 hover:bg-gray-100 text-sm">
+          <strong>${hit.title}</strong>          
+          <p class="text-xs opacity-70">
+            ${hit.content.slice(0, 80)}...
+          </p>
+        </a>
+      `)
+      .join("");
+
+  
+console.log(res);
+
+
+      resultsBox.classList.remove("hidden");
+    });
+  });
 </script>
+
+<!-- ✅ SCRIPT LIBRERIA -->
+<script src="https://cdn.jsdelivr.net/npm/algoliasearch@4/dist/algoliasearch-lite.umd.js"></script>

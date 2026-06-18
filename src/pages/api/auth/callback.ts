@@ -29,9 +29,7 @@ export const GET: APIRoute = async ({ url, cookies, redirect }) => {
 
   const data = await tokenRes.json();
 
-  console.log("TOKEN RESPONSE:", data);
-
-  cookies.set("auth", data.access_token, {
+  cookies.set("auth", data.id_token, {
     path: "/",
     httpOnly: true,
     sameSite: "lax",
@@ -39,7 +37,11 @@ export const GET: APIRoute = async ({ url, cookies, redirect }) => {
     maxAge: 60 * 60 * 24,
   });
 
-  console.log("CALLBACK URL:", url.toString());
+  return new Response(null, {
+  status: 302,
+  headers: {
+    Location: "/",
+  },
+});  
 
-  return redirect("/");
 };

@@ -5,41 +5,46 @@ import remarkGfm from 'remark-gfm';
 import react from '@astrojs/react';
 import tailwindcss from '@tailwindcss/vite';
 import node from '@astrojs/node';
-// ho installato remark ma lo uso SOLO per l'odinamento automatico delle pagine nella sidebar
-import astroExpressiveCode from 'astro-expressive-code';
-import mdx from '@astrojs/mdx';
-import remarkFixLinks from './src/remark/remark-fix-links.js';
-import remarkCallout from './src/remark/remark-fix-Callout.js';
-import remarkCardGrid from './src/remark/remark-fix-CardGrid.js';
-import remarkTypography from './src/remark/remark-fix-typography.js';
-import remarkComponents from './src/remark/remark-fix-components.js';
+import starlightDocSearch from '@astrojs/starlight-docsearch';
+import dotenv from "dotenv";
+dotenv.config();
 
+
+// ho installato remark ma lo uso SOLO per l'odinamento automatico delle pagine nella sidebar
 
 // https://astro.build/config
 export default defineConfig({
   output: "server",
   adapter: node({mode: 'standalone'}),
   integrations: [
-    /* astroExpressiveCode(),
-    mdx({
-        remarkPlugins: [
-          remarkComponents,
-          remarkFixLinks,
-          remarkCallout,
-          remarkCardGrid,
-          remarkTypography,
-        ]
-    }), */
-
     starlight({
+      favicon: '/favicon.svg',
+      head: [
+        {
+          tag: 'script',
+          attrs: {
+            src: 'https://kit.fontawesome.com/71b1a7f21a.js', // kit fontawsome
+            crossorigin: 'anonymous'
+          }
+        }
+      ],
       prerender: false, // serve per evitare pagine statiche
       title: '',
+      plugins: [
+        starlightDocSearch({
+          appId: process.env.ALGOLIA_APP_ID || "",
+          apiKey: process.env.ALGOLIA_SEARCH_KEY || "",
+          indexName: "docs",
+        })
+      ],
+      pagefind: false,
 	    customCss: ['./src/styles/global.css'],
       components: {
-        Header: './src/components/Header.astro'
+        Header: './src/components/Header.astro',
+        Footer: './src/components/Footer.astro',
       },
-      /* social: [{ icon: 'github', label: 'Shape GitHub', href: 'https://github.com/centrosoftware-cloud/shape-docs' }], */
       sidebar: [
+          // dinamic method, but there is 'Shape' folder that contains all the other folders
           {
               label: "Shape",
               items: [
@@ -49,18 +54,75 @@ export default defineConfig({
                   }
                 }
               ]
-          }
-      ],
-      head: [
+          },
+          // static metodh
+          /* {
+          label: "Introduction",
+          collapsed: true,
+          items: [
+            {
+              autogenerate: {
+                directory: 'introduction',
+              }
+            }
+          ]
+        },
         {
-          tag: 'script',
-          attrs: {
-            src: 'https://kit.fontawesome.com/71b1a7f21a.js', // 👈 il tuo kit fontawsome
-            crossorigin: 'anonymous'
-          }
-        }
-      ]
-
+          label: "Foundation",
+          collapsed: true,
+          items: [
+            {
+              autogenerate: {
+                directory: 'foundation',
+              }
+            }
+          ]
+        },
+        {
+          label: "Content",
+          collapsed: true,
+          items: [
+            {
+              autogenerate: {
+                directory: 'content',
+              }
+            }
+          ]
+        },
+        {
+          label: "Resources",
+          collapsed: true,
+          items: [
+            {
+              autogenerate: {
+                directory: 'resources',
+              }
+            }
+          ]
+        },
+        {
+          label: "Visual",
+          collapsed: true,
+          items: [
+            {
+              autogenerate: {
+                directory: 'visual',
+              }
+            }
+          ]
+        },
+        {
+          label: "Web",
+          collapsed: true,
+          items: [
+            {
+              autogenerate: {
+                directory: 'web',
+              }
+            }
+          ]
+        } */
+      ],
     }),
     
     react(),

@@ -4,9 +4,65 @@
     isolation: auto !important;
 }
 
+
 /* HEADER */
 site-search button {
   width: fit-content !important;
+}
+
+/* FOOTER */
+.custom-footer {
+    text-align: center;
+    margin-top: 2rem;
+    padding: 1rem;
+    border-top: 1px solid var(--sl-color-gray-5);
+    font-size: var(--sl-text-sm);
+    color: var(--sl-color-gray-3);
+    border-top: 2px solid transparent;
+    border-image: linear-gradient(to right, #26A8FA 0%, #66FFB1 100%) 1;
+}
+main:where(.astro-bguv2lll),
+.content-panel:where(.astro-7nkwcw3z)+.content-panel:where(.astro-7nkwcw3z){
+    padding-bottom: 8em !important;
+}
+main{
+    position: relative;
+}
+.footerhome{
+    width: 100%;
+    background: #f4f6f9;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    
+}
+.footerdocs{
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+.footerdocs div{
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+.footerdocs div p{
+    gap: 1em;
+    display: flex;
+}
+.footerdocs div a:hover{
+    background-color: #0084ff22;
+    color: #0084ff;
+    border-color: #0084ff;
+}
+.cliccabili{
+    background-color: rgb(240, 240, 240);
+    padding: 0em 0.5em;
+    border-radius: 4px;
 }
 
 main ol,
@@ -30,4 +86,35 @@ main menu {
 /* colora TUTTA la riga usando nth-child */
 table tr:has(.scale-box.bg-highlight) {
   color: #59a9f2;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #b1b1b1;
+    margin: 2.5rem 0 2rem 0;
+}
+
+/* INDEX.mdx */
+.hero:where(.astro-jbfsktt5){
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 3em;
+    padding-block: clamp(2.5rem, calc(1rem + 5vmin), 10rem);
+}
+.hero:where(.astro-jbfsktt5)>img:where(.astro-jbfsktt5){
+    width: 35rem;
+}
+.copy:where(.astro-jbfsktt5){
+    align-items: center;
+    gap: 3em;
+}
+h1:where(.astro-jbfsktt5){
+    /* display: none; */
+    font-size: xx-large !important;
+    font-weight: 350;
+    font-style: italic;
+}
+.tagline:where(.astro-jbfsktt5){
+    font-size: xx-large;
+    font-weight: 600;
 }

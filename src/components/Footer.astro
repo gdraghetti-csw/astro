@@ -1,0 +1,41 @@
+---
+import Default from '@astrojs/starlight/components/Footer.astro';
+
+const isHomepage = Astro.locals.starlightRoute.id === '';
+
+const { entry } = Astro.props;
+
+const oggetto = encodeURIComponent(`Shape Feedback pagina: "${Astro.url.href}"`);
+const oggettoPos = encodeURIComponent(`Shape Feedback Positivo sulla pagina: "${Astro.url.href}"`);
+const oggettoNeg = encodeURIComponent(`Shape Feedback Negativo sulla pagina: "${Astro.url.href}"`);
+const testoCorpo = `Ciao Team Marketing,\n\nVorrei inviarvi un feedback riguardo alla pagina: "${Astro.url.href}"\n\n[Scrivi qui il tuo messaggio]`
+const corpo = encodeURIComponent(testoCorpo);
+---
+
+{
+  isHomepage ? (
+    <div class="custom-footer footerhome">
+        <p>Centro Software S.p.A. - Marketing Team</p>
+    </div>
+  ) : (
+    <Default>
+      <slot />
+    </Default>
+    <div class="custom-footer footerdocs">
+        <div>
+            <p class="w-fit">
+              Questa pagina ti è stata utile? 
+              <a class="cliccabili" href={`mailto:marketing@centrosoftware.com?subject=${oggettoPos}&body=${corpo}`}>Si</a>
+              <a class="cliccabili" href={`mailto:marketing@centrosoftware.com?subject=${oggettoNeg}&body=${corpo}`}>No</a>
+              <a class="cliccabili" href={`mailto:marketing@centrosoftware.com?subject=${oggetto}&body=${corpo}`}>Scrivici <i class="fa-duotone fa-solid fa-comments"></i></a>
+            </p>
+            <p>Utilizziamo i feedback per migliorare la nostra documentazione</p>
+        </div>
+        <div>
+            <p>Centro Software S.p.A.</p>
+            <p>Team Marketing</p>
+        </div>
+    </div>
+  )
+}
+
